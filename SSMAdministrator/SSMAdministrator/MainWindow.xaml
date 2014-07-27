@@ -1,0 +1,16 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" xmlns:MapProviders="clr-namespace:GMap.NET.MapProviders;assembly=GMap.NET.Core" x:Class="SSMAdministrator.MainWindow"
+        Title="SSMAdministrator" Height="568" Width="1024" Icon="CustomMarkers/red-dot.png" Loaded="Window_Loaded">
+    <Grid Background="#FF63957C">
+
+        <Grid Margin="0,25,0,0">
+            <WindowsPresentation:GMapControl x:Name="gmMain" MinZoom="0" MaxZoom="10" Foreground="{x:Null}" OnMapDrag="gmMain_OnMapDrag" MouseDoubleClick="gmMain_MouseDoubleClick"/>
+        </Grid>
+        <Label x:Name="lCurrPoss" Margin="10,-1,266,0" VerticalAlignment="Top" Height="26"/>
+        <Button x:Name="bReload" Content="Reload" Click="bReload_Click" HorizontalAlignment="Right" Width="65" Height="25" VerticalAlignment="Top"/>
+        <Button Content="LoadMarkers" Margin="0,0,70,0" Click="Button_Click" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80"/>
+        
+    </Grid>
+</Window>
