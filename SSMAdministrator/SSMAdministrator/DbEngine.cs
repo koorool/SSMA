@@ -22,11 +22,16 @@ namespace SSMAdministrator
         /// </summary>
 
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings[1].ToString(); //0 is default localhost CS
-        static public List<GMapMarker> GetAllMarkers()
+        static public List<Marker> GetAllMarkers()
         {
-            var dbConn = new MySqlConnection(connectionString);
-            dbConn.Open();
-            dbConn.Close();
+            using (var dbConn = new MySqlConnection(connectionString))
+            {
+                var req = "SELECT  "
+                dbConn.Open();
+
+                dbConn.Close();    
+            }
+            
             return null;
         }
 

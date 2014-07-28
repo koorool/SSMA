@@ -11,18 +11,18 @@ namespace SSMAdministrator
 {
     class Marker
     {
+        public GMapMarker GmMarker;
         public string MarkerName;
         public string Description;
-        public PointLatLng CoordLatLng;
         public bool Freeware;
         public int Sim;
-        public GMapMarker GmMarker;
+        
         
 
         public override string ToString()
         {
             return "Name:" + MarkerName + "Description" + Description + 
-                "Coords: "+ CoordLatLng.ToString() + "Is FreeWare: " + Freeware.ToString();
+                "Is FreeWare: " + Freeware.ToString();
         }
     }
 }

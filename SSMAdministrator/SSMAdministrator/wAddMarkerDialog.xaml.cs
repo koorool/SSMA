@@ -35,7 +35,26 @@ namespace SSMAdministrator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            MarkerName = tbName.Text;
+            Description = tbDescription.Text;
+            if (rbFreeWare.IsChecked != null) FreeWare = rbFreeWare.IsChecked.Value;
             DialogResult = true;
+        }
+
+        private void tbName_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if (tbName.Text == "Имя")
+            {
+                tbName.Text = "";
+            }
+        }
+
+        private void tbDescription_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (tbDescription.Text == "Описание")
+            {
+                tbDescription.Text = "";
+            }
         }
     }
 }

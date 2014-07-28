@@ -28,7 +28,7 @@ namespace SSMAdministrator
     public partial class MainWindow : Window
     {
         //private GMapMarker currentMarker;
-        //private List<Marker> Markers = new List<Marker>(); 
+        private List<Marker> _markers = new List<Marker>(); 
         public MainWindow()
         {
             InitializeComponent();
@@ -107,14 +107,28 @@ namespace SSMAdministrator
 
         private void gmMain_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            System.Windows.Point p = e.GetPosition(gmMain);
+            var p = e.GetPosition(gmMain);
             var wAmd = new wAddMarkerDialog(gmMain.FromLocalToLatLng((int)p.X, (int)p.Y));
+            
             wAmd.ShowDialog();
+            if (!wAmd.DialogResult.HasValue || !wAmd.DialogResult.Value) return;
 
-            if (wAmd.DialogResult.HasValue && wAmd.DialogResult.Value)
+            var newGMarker = new GMapMarker(gmMain.FromLocalToLatLng((int) p.X, (int) p.Y));
+            newGMarker.Shape = wAmd.rbFreeWare.IsChecked.Value
+                ? new CustomMarkerRed(this, newGMarker, wAmd.MarkerName)
+                : new CustomMarkerRed(this, newGMarker, wAmd.MarkerName); 
+            newGMarker.Offset = new Point(-15,-15);
+            newGMarker.ZIndex = int.MaxValue;
+            gmMain.Markers.Add(newGMarker);
+            var newMarker = new Marker
             {
-
-            }
+                GmMarker = newGMarker,
+                Description = wAmd.Description,
+                Freeware = wAmd.rbFreeWare.IsChecked.Value,
+                MarkerName = wAmd.MarkerName,
+                Sim = 0
+            };
+            _markers.Add(newMarker);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
