@@ -26,7 +26,7 @@ namespace SSMAdministrator
         {
             using (var dbConn = new MySqlConnection(connectionString))
             {
-                var req = "SELECT  "
+                var req = "SELECT  ";
                 dbConn.Open();
 
                 dbConn.Close();    
